@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+import CounterModal from "./components/CounterModal";
 
 function App() {
+  const [show, setShow] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{ height: "600px" }}
+      className="container d-flex justify-content-center align-items-center"
+    >
+      <Button variant="primary" onClick={() => setShow(true)}>
+        Click Me
+      </Button>
+      <CounterModal setShow={setShow} show={show} />
     </div>
   );
 }
