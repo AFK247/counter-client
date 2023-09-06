@@ -10,7 +10,7 @@ import Loader from "./Loader";
 const CounterModal = ({ setShow, show }) => {
   const dispatch = useDispatch();
 
-  const [countVal, setCountVal] = useState(0);
+  const [countVal, setCountVal] = useState("loading..");
   const [loading, setLoading] = useState(false);
 
   const storeCount = useSelector((state) => state.counter.countValue);
@@ -21,7 +21,7 @@ const CounterModal = ({ setShow, show }) => {
     if (storeCount && show) setCountVal(storeCount);
     //Getting counter value from API call
     else if (show) {
-      fetch("http://localhost:5000/counterApi", {
+      fetch("https://counter-server.vercel.app/counterApi", {
         method: "GET",
       })
         .then((res) => res.json())
@@ -36,7 +36,7 @@ const CounterModal = ({ setShow, show }) => {
 
     //After submit update API is called
     setLoading(true);
-    fetch(`http://localhost:5000/updateCounter/${countVal}`, {
+    fetch(`https://counter-server.vercel.app/updateCounter/${countVal}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
