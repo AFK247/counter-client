@@ -7,9 +7,7 @@ export const counterSlice = createSlice({
   },
   reducers: {
     savedCount: (state, { payload }) => {
-      console.log(state.countValue);
       state.countValue = payload;
-      console.log(state.countValue);
     },
   },
 });
